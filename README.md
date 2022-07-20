@@ -92,7 +92,7 @@ For the MUX design, line 57:  5'b11110: out = inp30, default: out = 0; as in the
 
 The following error is seen:
 ```
-AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 57
+AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 40
 ```
 
 ## Test Scenario **(Important)**
