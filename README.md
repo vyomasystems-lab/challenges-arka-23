@@ -88,15 +88,15 @@ Based on the above test input and analysing the design, we see the following
 ```
 Input not available. Possible error after line no. 57
 ```
-For the MUX design, line 57:  5'b11110: out = inp30, default: out = 0; as in the design code.
+For the MUX design, line 57:  5'b11110: out = inp30, before default: out = 0; as in the design code.
 
 The following error is seen:
 ```
-AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 40
+AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 39
 ```
 
 ## Test Scenario **(Important)**
-- Test Inputs: sel = 11110
+- Test Inputs: sel = 01100
 - Expected Output: out = 1
 - Observed Output in the DUT dut.out = 0
 
