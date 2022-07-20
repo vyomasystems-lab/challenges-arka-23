@@ -113,9 +113,8 @@ For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out 
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![](https://i.imgur.com/5XbL1ZH.png)
+![image](https://user-images.githubusercontent.com/70422874/180037501-54e5b02e-0159-4aa2-8aba-880d75ea50b0.png)
 
-The updated design is checked in as adder_fix.v
 
 ## Verification Strategy
 
