@@ -65,12 +65,50 @@ Output mismatches for the above inputs proving that there is a design bug
 Based on the above test input and analysing the design, we see the following
 
 ```
- always @(a or b) 
-  begin
-    sum = a - b;             ====> BUG
-  end
+ line 40 : 5'b01101: out = inp12;
+ line 41 : 5'b01101: out = inp13;
 ```
-For the adder design, the logic should be ``a + b`` instead of ``a - b`` as in the design code.
+For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out = inp12; as in the design code.
+
+The following error is seen:
+```
+AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 57
+```
+
+## Test Scenario **(Important)**
+- Test Inputs: sel = 11110
+- Expected Output: out = 1
+- Observed Output in the DUT dut.out = 0
+
+Output mismatches for the above inputs proving that there is a design bug
+
+## Design Bug
+Based on the above test input and analysing the design, we see the following
+
+```
+Input not available. Possible error after line no. 57
+```
+For the MUX design, line 57:  5'b11110: out = inp30, default: out = 0; as in the design code.
+
+The following error is seen:
+```
+AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 57
+```
+
+## Test Scenario **(Important)**
+- Test Inputs: sel = 11110
+- Expected Output: out = 1
+- Observed Output in the DUT dut.out = 0
+
+Output mismatches for the above inputs proving that there is a design bug
+
+## Design Bug
+Based on the above test input and analysing the design, we see the following
+
+```
+Input not available. Possible error after line no. 40
+```
+For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out = inp12; as in the design code.
 
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
