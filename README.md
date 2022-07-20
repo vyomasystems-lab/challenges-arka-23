@@ -9,23 +9,54 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 ## Verification Environment
 
-The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (adder module here) which takes in 4-bit inputs *a* and *b* and gives 5-bit output *sum*
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (MUX module here) which takes in 5-bit input *sel* and 31 2-bit inputs *inp* and gives 2-bit output *out*
 
 The values are assigned to the input port using 
 ```
-dut.a.value = 7
-dut.b.value = 5
+dut.inp0.value = 1;
+    dut.inp1.value = 2;
+    dut.inp2.value = 1;
+    dut.inp3.value = 2;
+    dut.inp4.value = 1;
+    dut.inp5.value = 2;
+    dut.inp6.value = 1;
+    dut.inp7.value = 2;
+    dut.inp8.value = 1;
+    dut.inp9.value = 2;
+    dut.inp10.value = 1;
+    dut.inp11.value = 2;
+    dut.inp12.value = 1;
+    dut.inp13.value = 2;
+    dut.inp14.value = 1;
+    dut.inp15.value = 2;
+    dut.inp16.value = 1;
+    dut.inp17.value = 2;
+    dut.inp18.value = 1;
+    dut.inp19.value = 2;
+    dut.inp20.value = 1;
+    dut.inp21.value = 2;
+    dut.inp22.value = 1;
+    dut.inp23.value = 2;
+    dut.inp24.value = 1;
+    dut.inp25.value = 2;
+    dut.inp26.value = 1;
+    dut.inp27.value = 2;
+    dut.inp28.value = 1;
+    dut.inp29.value = 2;
+    dut.inp30.value = 1;   
+
+
+    dut.sel.value = sel
 ```
 
-The assert statement is used for comparing the adder's outut to the expected value.
+The assert statement is used for comparing the MUX's outut to the expected value.
 
 The following error is seen:
 ```
-assert dut.sum.value == A+B, "Adder result is incorrect: {A} + {B} != {SUM}, expected value={EXP}".format(
-                     AssertionError: Adder result is incorrect: 7 + 5 != 2, expected value=12
+AssertionError: Randomised test failed with: select line - 01101 corresponding to two different input lines. Possible error in line no. 40
 ```
 ## Test Scenario **(Important)**
-- Test Inputs: a=7 b=5
+- Test Inputs: sel = 01101
 - Expected Output: sum=12
 - Observed Output in the DUT dut.sum=2
 
