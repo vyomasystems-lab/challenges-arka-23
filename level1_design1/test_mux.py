@@ -23,7 +23,7 @@ async def test_mux(dut):
     dut.inp12.value = 1;
     dut.inp13.value = 2;
     dut.inp14.value = 1;
-    dut.inp15.value = 1;
+    dut.inp15.value = 2;
     dut.inp16.value = 1;
     dut.inp17.value = 2;
     dut.inp18.value = 1;
@@ -41,9 +41,9 @@ async def test_mux(dut):
     dut.inp30.value = 1;   
 
 
-    for i in range(50):
+    for i in range(100):
 
-        sel = random.randint(0, 31)
+        sel = random.randint(0, 30)
         dut.sel.value = sel
         
         if sel % 2 == 0:
@@ -51,9 +51,12 @@ async def test_mux(dut):
         else:
             val = 2
         
-        await Timer(2, units='ns')
+        await Timer(2, units='ns')     
         
         dut._log.info(f'sel={sel:05}  model={val:05} DUT={int(dut.out.value):05}')
-        assert dut.out.value == val, "Randomised test failed with: {sel} - select = {out}".format(
-            sel=dut.sel.value, out=dut.out.value)
 
+        assert dut.out.value != 0, "Randomised test failed with: select - {sel}, input not available ".format(sel=dut.sel.value)            
+        assert dut.out.value == val, "Randomised test failed with: select - {sel} = value - {out} ".format(sel=dut.sel.value, out=dut.out.value)
+        
+        
+            
