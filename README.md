@@ -106,7 +106,7 @@ Output mismatches for the above inputs proving that there is a design bug
 Based on the above test input and analysing the design, we see the following
 
 ```
-Input not available. Possible error after line no. 40
+Input not available. Possible error after line no. 39
 ```
 For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out = inp12; as in the design code.
 
