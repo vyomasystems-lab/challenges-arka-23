@@ -1,6 +1,6 @@
 # Challenges-arka-23
 Challenges-arka-23 created by GitHub Classroom
-# MUX Design Verification
+# Sequence Detector Design Verification
 
 The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
@@ -32,9 +32,9 @@ The assert statement is used for comparing the MUX's outut to the expected value
 
 The following error is seen:
 ```
- AssertionError: Randomised test failed with: sequence - [1, 0, 1, 0, 1, 1]
+ AssertionError: Randomised test failed with: sequence - [1, 0, 1, 0, 1, 1]. Error in case SEQ_101, where if input bit is 0, next_state = SEQ_10
  ```
- ![image](https://user-images.githubusercontent.com/70422874/180702488-8a9d4b73-537e-4f82-b300-aa490003d755.png)
+![image](https://user-images.githubusercontent.com/70422874/180706148-a7f4a163-e191-4496-ab6b-4658d6147896.png)
  
 ## Test Scenario **(Important)**
 - Test Inputs: inp_bit sequence = 101011
@@ -47,16 +47,15 @@ Output mismatches for the above inputs proving that there is a design bug
 Based on the above test input and analysing the design, we see the following
 
 ```
- line 40 : 5'b01101: out = inp12;
- line 41 : 5'b01101: out = inp13;
+Error in case SEQ_101, where if input bit is 0, next_state = SEQ_10
 ```
-For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out = inp12; as in the design code.
+
 
 The following error is seen:
 ```
- AssertionError: Randomised test failed with: sequence - [0, 1, 1, 0, 1, 1]
+  AssertionError: Randomised test failed with: sequence - [0, 1, 1, 0, 1, 1]. Error in case SEQ_1, where if input bit is 1, next_state = SEQ_1
 ```
-![image](https://user-images.githubusercontent.com/70422874/180702786-257eec88-8dfc-4511-bd9f-bbbfc1e0f4c9.png)
+![image](https://user-images.githubusercontent.com/70422874/180706426-cad87293-08a5-4c54-bd69-76d73a62e7d9.png)
 
 ## Test Scenario **(Important)**
 - Test Inputs: inp_bit sequence = 011011
@@ -69,11 +68,8 @@ Output mismatches for the above inputs proving that there is a design bug
 Based on the above test input and analysing the design, we see the following
 
 ```
-Input not available. Possible error after line no. 57
+Error in case SEQ_1, where if input bit is 1, next_state = SEQ_1
 ```
-For the MUX design, line 57:  5'b11110: out = inp30, before default: out = 0; as in the design code.
-
-
 
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
