@@ -75,7 +75,7 @@ Based on the above test input and analysing the design, we see the following
 ```
 For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out = inp12; as in the design code.
 
-##The following error is seen:
+## The following error is seen:
 ```
 AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 57
 ```
