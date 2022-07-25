@@ -53,20 +53,20 @@ The values are assigned to the input port using
 
 The assert statement is used for comparing the MUX's outut to the expected value.
 
-The following error is seen:
+## The following error is seen:
 ```
 AssertionError: Randomised test failed with: select line - 01101 corresponding to two different input lines. Possible error in line no. 40
 ```
 ![image](https://user-images.githubusercontent.com/70422874/180707564-9f78f528-34da-4af9-a1ef-03be85f639b0.png)
 
-## Test Scenario **(Important)**
+# Test Scenario **(Important)**
 - Test Inputs: sel = 01101
 - Expected Output: out = 2
 - Observed Output in the DUT dut.out = 1
 
 Output mismatches for the above inputs proving that there is a design bug
 
-## Design Bug
+# Design Bug
 Based on the above test input and analysing the design, we see the following
 
 ```
@@ -75,20 +75,20 @@ Based on the above test input and analysing the design, we see the following
 ```
 For the MUX design, line 40 :  5'b01100: out = inp12, instead of  5'b01101: out = inp12; as in the design code.
 
-The following error is seen:
+##The following error is seen:
 ```
 AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 57
 ```
 ![image](https://user-images.githubusercontent.com/70422874/180707639-66f0b545-57f6-4b52-96d8-aaca66b9554b.png)
 
-## Test Scenario **(Important)**
+# Test Scenario **(Important)**
 - Test Inputs: sel = 11110
 - Expected Output: out = 1
 - Observed Output in the DUT dut.out = 0
 
 Output mismatches for the above inputs proving that there is a design bug
 
-## Design Bug
+# Design Bug
 Based on the above test input and analysing the design, we see the following
 
 ```
@@ -96,20 +96,20 @@ Input not available. Possible error after line no. 57
 ```
 For the MUX design, line 57:  5'b11110: out = inp30, before default: out = 0; as in the design code.
 
-The following error is seen:
+## The following error is seen:
 ```
 AssertionError: Randomised test failed with: select - 01100, input not available. Possible error after line no. 39
 ```
 ![image](https://user-images.githubusercontent.com/70422874/180707446-ded3180a-a2ad-4f8a-b42c-0cf47f65436e.png)
 
-## Test Scenario **(Important)**
+# Test Scenario **(Important)**
 - Test Inputs: sel = 01100
 - Expected Output: out = 1
 - Observed Output in the DUT dut.out = 0
 
 Output mismatches for the above inputs proving that there is a design bug
 
-## Design Bug
+# Design Bug
 Based on the above test input and analysing the design, we see the following
 
 ```
