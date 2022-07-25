@@ -1,4 +1,4 @@
-module seq16x9(RESET,in_Mx,in_My,Prod,CLK);
+module sequential_mult(RESET,in_Mx,in_My,Prod,CLK);
 
 //Multiplier and multiplicand inputs to be stored in Mx and My registers
 input [15:0]in_Mx; 
