@@ -30,7 +30,7 @@ The values are assigned to the input port using
 
 The assert statement is used for comparing the MUX's outut to the expected value.
 
-The following error is seen:
+## The following error is seen:
 ```
  AssertionError: Randomised test failed with: sequence - [1, 0, 1, 0, 1, 1]. Error in case SEQ_101, where if input bit is 0, next_state = SEQ_10
  ```
@@ -51,7 +51,7 @@ Error in case SEQ_101, where if input bit is 0, next_state = SEQ_10
 ```
 
 
-The following error is seen:
+## The following error is seen:
 ```
   AssertionError: Randomised test failed with: sequence - [0, 1, 1, 0, 1, 1]. Error in case SEQ_1, where if input bit is 1, next_state = SEQ_1
 ```
