@@ -47,6 +47,9 @@ The values are assigned to the input port using
 
     dut.sel.value = sel
 ```
+![image](https://user-images.githubusercontent.com/70422874/180708014-8b05c385-6e33-4c38-ad23-5c6c0acb76f1.png)
+
+![image](https://user-images.githubusercontent.com/70422874/180708074-08b96270-6b68-46f3-8008-ee19cf9bf928.png)
 
 The assert statement is used for comparing the MUX's outut to the expected value.
 
