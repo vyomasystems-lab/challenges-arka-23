@@ -74,7 +74,14 @@ Error in case SEQ_1, where if input bit is 1, next_state = SEQ_1
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![image](https://user-images.githubusercontent.com/70422874/180037501-54e5b02e-0159-4aa2-8aba-880d75ea50b0.png)
+INPUT SEQUENCE - 011011
+
+![image](https://user-images.githubusercontent.com/70422874/180706712-772027e3-8c5a-43d9-836c-4695a2bdd1de.png)
+
+INPUT SEQUENCE - 101011
+
+![image](https://user-images.githubusercontent.com/70422874/180706950-eb71a826-736e-4de8-afb3-69e716a41eaa.png)
+
 
 
 ## Verification Strategy
