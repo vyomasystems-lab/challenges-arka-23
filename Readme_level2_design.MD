@@ -53,7 +53,7 @@ The assert statement is used for comparing the MUX's outut to the expected value
 - mav_putvalue_src3 = 0x0
 - mav_putvalue_instr = 0x110150B3
 - Expected Output: expected_mav_putvalue = 0x0
-- Observed Output in the DUT dut_output = 0x2
+- Observed Output in the DUT: dut_output = 0x2
 
 Output mismatches for the above inputs proving that there is a design bug
 
