@@ -32,7 +32,7 @@ loadIn INPUT(in_Mx,in_My,load_Mx,load_My,CLK,Mx,My,My_bit,shift_My);
 PPGen PPG(Mx,My_bit,PP);
 Adder ADD(PP,Acc[16:1],Sum);
 Accumulator ACC(Sum,load_Acc,clear_Acc,Acc,D_out,CLK);
-ShiftReg SHIFT_In(shiftReg,shift_In,D_out,CLK,clear_Acc);
+ ShiftReg SHIFT_In(shiftReg,shift_In,D_out,CLK,clear_Acc);
 
 assign Prod = {Acc,shiftReg};
 
