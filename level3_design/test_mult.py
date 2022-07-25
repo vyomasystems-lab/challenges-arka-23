@@ -8,56 +8,48 @@ from cocotb.decorators import coroutine
 from cocotb.triggers import Timer, RisingEdge
 from cocotb.result import TestFailure
 from cocotb.clock import Clock
+from cocotb.binary import BinaryValue
+from cocotb.triggers import RisingEdge, FallingEdge
 
-from model_mkbitmanip import *
 
-# Clock Generation
-@cocotb.coroutine
-def clock_gen(signal):
-    while True:
-        signal.value <= 0
-        yield Timer(1) 
-        signal.value <= 1
-        yield Timer(1) 
 
 # Sample Test
 @cocotb.test()
-def run_test(dut):
+async def run_test(dut):
 
     # clock
-    cocotb.fork(clock_gen(dut.CLK))
-    for i in range(2):
-        # reset
-        dut.RST_N.value <= 0
-        yield Timer(10) 
-        dut.RST_N.value <= 1
+    clock = Clock(dut.CLK, 10, units="ns")  # Create a 10us period clock on port clk
+    cocotb.start_soon(clock.start())        # Start the clock
+
+    # reset
+    dut.RESET.value = 0
+    await FallingEdge(dut.CLK)  
+    dut.RESET.value = 1    
+    
+    for i in range(11):
+        
 
         ######### CTB : Modify the test to expose the bug #############
         # input transaction
-        mav_putvalue_src1 = i
-        mav_putvalue_src2 = i + 1
-        mav_putvalue_src3 = 0x0
-        mav_putvalue_instr = 0x010150B3
+        a = 253
+        b = 254
 
         # expected output from the model
-        expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3)
-
+        expected_value = a*b
         # driving the input transaction
-        dut.mav_putvalue_src1.value = mav_putvalue_src1
-        dut.mav_putvalue_src2.value = mav_putvalue_src2
-        dut.mav_putvalue_src3.value = mav_putvalue_src3
-        dut.EN_mav_putvalue.value = 1
-        dut.mav_putvalue_instr.value = mav_putvalue_instr
-    
-        yield Timer(1) 
+        dut.in_Mx.value = a
+        dut.in_My.value = b
+
+           
+        await FallingEdge(dut.CLK) 
 
         # obtaining the output
-        dut_output = dut.mav_putvalue.value
+        dut_output = dut.Prod.value
 
-        cocotb.log.info(f'DUT OUTPUT={hex(dut_output)}')
-        cocotb.log.info(f'EXPECTED OUTPUT={hex(expected_mav_putvalue)}')
+        cocotb.log.info(f'DUT OUTPUT={dut_output}')
+        cocotb.log.info(f'EXPECTED OUTPUT={expected_value}')
         
         # comparison
-        error_message = f'Value mismatch DUT = {hex(dut_output)} does not match MODEL = {hex(expected_mav_putvalue)}. Instruction not present,          expected output is {hex(expected_mav_putvalue)}'
-        assert dut_output == expected_mav_putvalue, error_message
+        error_message = f'Value mismatch DUT = {dut_output} does not match MODEL = {expected_value}'
+    assert dut_output == expected_value, error_message
 
