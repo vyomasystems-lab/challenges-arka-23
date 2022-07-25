@@ -54,6 +54,8 @@ The following error is seen:
 ```
 AssertionError: Randomised test failed with: select line - 01101 corresponding to two different input lines. Possible error in line no. 40
 ```
+![image](https://user-images.githubusercontent.com/70422874/180707564-9f78f528-34da-4af9-a1ef-03be85f639b0.png)
+
 ## Test Scenario **(Important)**
 - Test Inputs: sel = 01101
 - Expected Output: out = 2
@@ -74,6 +76,7 @@ The following error is seen:
 ```
 AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 57
 ```
+![image](https://user-images.githubusercontent.com/70422874/180707639-66f0b545-57f6-4b52-96d8-aaca66b9554b.png)
 
 ## Test Scenario **(Important)**
 - Test Inputs: sel = 11110
@@ -92,8 +95,9 @@ For the MUX design, line 57:  5'b11110: out = inp30, before default: out = 0; as
 
 The following error is seen:
 ```
-AssertionError: Randomised test failed with: select - 11110, input not available. Possible error after line no. 39
+AssertionError: Randomised test failed with: select - 01100, input not available. Possible error after line no. 39
 ```
+![image](https://user-images.githubusercontent.com/70422874/180707446-ded3180a-a2ad-4f8a-b42c-0cf47f65436e.png)
 
 ## Test Scenario **(Important)**
 - Test Inputs: sel = 01100
