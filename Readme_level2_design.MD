@@ -23,7 +23,7 @@ The values are assigned to the input port using
         mav_putvalue_src1 = i
         mav_putvalue_src2 = i + 1
         mav_putvalue_src3 = 0x0
-        mav_putvalue_instr = 0x610150B3
+        mav_putvalue_instr = 0x110150B3
 
         # expected output from the model
         expected_mav_putvalue = bitmanip(mav_putvalue_instr, mav_putvalue_src1, mav_putvalue_src2, mav_putvalue_src3)
@@ -35,7 +35,8 @@ The values are assigned to the input port using
         dut.EN_mav_putvalue.value = 1
         dut.mav_putvalue_instr.value = mav_putvalue_instr
 ```
-![image](https://user-images.githubusercontent.com/70422874/180823145-7092481d-7673-41ab-8a23-abbb9c3acd8f.png)
+
+![image](https://user-images.githubusercontent.com/70422874/180824336-98962e5f-1394-4fe5-8e9e-f5895dfd0a6c.png)
 
 
 The assert statement is used for comparing the MUX's outut to the expected value.
@@ -44,7 +45,7 @@ The assert statement is used for comparing the MUX's outut to the expected value
 ```
  AssertionError: Value mismatch DUT = 0x2 does not match MODEL = 0x0. Instruction not present, expected output is 0x0
  ```
-![image](https://user-images.githubusercontent.com/70422874/180706148-a7f4a163-e191-4496-ab6b-4658d6147896.png)
+![image](https://user-images.githubusercontent.com/70422874/180823145-7092481d-7673-41ab-8a23-abbb9c3acd8f.png)
  
 ## Test Scenario **(Important)**
 - mav_putvalue_src1 = i
