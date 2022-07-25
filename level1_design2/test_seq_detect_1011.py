@@ -2,7 +2,6 @@
 
 # SPDX-License-Identifier: CC0-1.0
 
-
 import os
 import random
 from pathlib import Path
@@ -50,6 +49,8 @@ async def test_seq_bug1(dut):
     await FallingEdge(dut.clk)    
     dut._log.info(f'bit={1:01}  model={A:01} DUT={int(dut.seq_seen.value):01}')
 
-    assert dut.seq_seen.value == A, "Randomised test failed with: sequence - {x} ".format(x = x)
-        
+    if x[0] == 0 and x[1] == 1:
+        assert dut.seq_seen.value == A, "Randomised test failed with: sequence - {x}. Error in case SEQ_1, where if input bit is 1, next_state = SEQ_1".format(x = x)
+    else:
+        assert dut.seq_seen.value == A, "Randomised test failed with: sequence - {x}. Error in case SEQ_101, where if input bit is 0, next_state = SEQ_10".format(x = x)
         
