@@ -12,5 +12,5 @@ All files for the challenges have been updated with the required python test ben
 
 ## Acknowledgement
 1. Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd. - kunalpghosh@gmail.com
-2. lavanya@vyomasystems.com
+2. Lavanya J - lavanya@vyomasystems.com
 3. https://hackathon.nielit.in/course/view.php?id=73
