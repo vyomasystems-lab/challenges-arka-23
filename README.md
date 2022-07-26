@@ -4,8 +4,7 @@ Challenges-arka-23 created by GitHub Classroom
 
 The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
-
-![image](https://user-images.githubusercontent.com/70422874/180022741-804d1df6-d9d3-4574-81ac-769b454e18dc.png)
+![image](https://user-images.githubusercontent.com/70422874/180948628-e3b7198e-3dbd-4c59-a4f0-49c08048eb9e.png)
 
 ## Verification Environment
 
