@@ -25,31 +25,51 @@ async def run_test(dut):
     dut.RESET.value = 0
     await FallingEdge(dut.CLK)  
     dut.RESET.value = 1    
-    
-    for i in range(11):
-        
-
+    a = random.randint(0, 1024)
+    b = random.randint(0, 255)
+    x = []
+    y = []
+    for i in range(11):  
         ######### CTB : Modify the test to expose the bug #############
-        # input transaction
-        a = 253
-        b = 254
 
-        # expected output from the model
-        expected_value = a*b
+        # input transaction       
         # driving the input transaction
         dut.in_Mx.value = a
-        dut.in_My.value = b
-
-           
+        dut.in_My.value = b           
         await FallingEdge(dut.CLK) 
 
         # obtaining the output
-        dut_output = dut.Prod.value
+        dut_output = dut.Prod.value        
+       
+        if i >= 1:
+            if int(dut.Prod.value) != 0:
+                x.append(bin(dut.Prod.value))
+                y.append(dut_output)
+        if i != 10:        
+            cocotb.log.info(f'DUT OUTPUT={dut_output}')
+        else:
+            cocotb.log.info(f'DUT OUTPUT={dut_output}')
+            cocotb.log.info(f'DUT DECIMAL OUTPUT={int(dut_output)}')
 
-        cocotb.log.info(f'DUT OUTPUT={dut_output}')
-        cocotb.log.info(f'EXPECTED OUTPUT={expected_value}')
-        
+    
+    # expected output from the model
+    expected_value = a*b    
+    cocotb.log.info(f'EXPECTED OUTPUT={expected_value}')
+
+    temp1 = bin(a)   
+    print("MULTIPLICAND : ", format(a, "b"))
+    print("ACCUMULATOR OUTPUT WHEN LOADED WITH MULTIPLICAND FOR THE FIRST INSTANCE: ", y[0])
+
+    if temp1 not in x[0]:
+        z = 1
+    else:
+        z = 0        
         # comparison
-        error_message = f'Value mismatch DUT = {dut_output} does not match MODEL = {expected_value}'
-    assert dut_output == expected_value, error_message
+    if z == 1:    
+        error_message = f'Value mismatch DUT = {int(dut_output)} does not match MODEL = {expected_value}. Accumulator loaded with incorrect value, check Load-In block.'
+        assert dut_output == expected_value, error_message
+    else:
+        error_message = f'Value mismatch DUT = {int(dut_output)} does not match MODEL = {expected_value}. Accumulator loaded with incorrect value, check Load-In block.'
+        assert dut_output == expected_value, error_message
+
 
