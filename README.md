@@ -9,3 +9,7 @@ challenges-arka-23 created by GitHub Classroom
 - Readme_level3_design.MD
 
 All files for the challenges have been updated with the required python test benches.
+
+## Acknowledgement
+1. Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd. - kunalpghosh@gmail.com
+5. https://hackathon.nielit.in/course/view.php?id=73
