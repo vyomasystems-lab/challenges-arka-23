@@ -129,3 +129,4 @@ Updating the design and re-running the test makes the test pass.
 - In test code, inputs chosen in a particular pattern to point out the duplicacies and unavailable inputs.
 
 ## Is the verification complete ?
+ Yes.
