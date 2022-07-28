@@ -99,7 +99,7 @@ Corrected Code:
 - DUT outputs observed thoroughly
 - According to design, DUT output is the concatenation of the outputs of Accumulator and shift register
 - According to design, after being reset the first value loaded to the Accumulator is the Multiplicand(other than 0) 
-- Any variation in Accumulator contents reflects that there might be an error in the loading steps
+- Any variation in the above statement reflects that there might be an error in the loading steps
 
 ## Is the verification complete ?
 
