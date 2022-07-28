@@ -58,7 +58,7 @@ async def run_test(dut):
 
     temp1 = bin(a)   
     print("MULTIPLICAND : ", format(a, "b"))
-    print("ACCUMULATOR OUTPUT WHEN LOADED WITH MULTIPLICAND FOR THE FIRST INSTANCE: ", y[0])
+    print("PRODUCT OUTPUT WHEN ACCUMULATOR IS LOADED WITH MULTIPLICAND FOR THE FIRST INSTANCE: ", y[0])
 
     if temp1 not in x[0]:
         z = 1
